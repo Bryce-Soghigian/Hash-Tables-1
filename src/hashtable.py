@@ -20,19 +20,22 @@ class HashTable:
     def _hash(self, key):
         '''
         Hash an arbitrary key and return an integer.
-
         You may replace the Python hash with DJB2 as a stretch goal.
         '''
         return hash(key)
 
 
     def _hash_djb2(self, key):
+        hash = 5381
+        for x in key:
+            hash = ((hash<<5) + hash) + ord(x)
+        return hash & 0xFFFFFFFF
         '''
         Hash an arbitrary key using DJB2 hash
 
         OPTIONAL STRETCH: Research and implement DJB2
         '''
-        pass
+        
 
 
     def _hash_mod(self, key):
